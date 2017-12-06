@@ -1,0 +1,68 @@
+Hadoop Installation
+
+The below mentioned steps are used to install Apache Hadoop. This installation is only for the Hadoop downloaded from Apache and not based on any Distribution. This one gives a detailed step for Single node cluster.
+
+
+Step 1: Install Java
+
+Since Hadoop is mostly written in Java, we need to install JDK packages to run Hadoop. There are two different things JRE and JDK. JRE provides runtime environment for java programs. It has libraries that allows java program to run. JDK also known as Java Development Kit is Software Development Kit which helps developers use libraries to develop a application .
+
+To install java , goto terminal and type
+
+>> sudo apt-get update
+
+This command will update the libraries. It is always better to update java before installing Hadoop, otherwise there might be a mismatch in Hadoop configuration to java. Which will make Hadoop stop working.
+
+>> sudo apt-get install default-jdk
+
+This command will download and install the files and libraries for the JDK.
+
+Step 2: Create user group
+
+Since in the enterprise everyone will have different user permissions, its always good to have user group
+
+>> sudo add group Hadoop
+
+This command will create a group called Hadoop.
+
+Step 3: Create user and add it group
+
+>> sudo adducer --ingroup Hadoop hduser
+
+This command will create user hduser and add it the the group Hadoop
+
+Step 4: install Ssh
+
+SSH is secure shell is a protocol which is used to connect over a network security ,even when the network is unsecured this connection provides safe means for the data to be transmitted and received.
+
+>>sudo apt-get install ssh
+
+This command will install ssh protocol
+
+Step 5 : create Leyden
+
+keygen is like a key which is unique, its needs to be generated for a connection to be made over ssh
+
+>>ssh-keygen -t rsa -P ""
+
+This command creates a ssh key 
+
+Step 6: copy key to another file.
+
+>>cat $HOME/.ssh/id_rsa.pub >> $HOME/.ssh/authorized_keys
+
+This command copies the data from id_rsa.pub to authorised key so that we can use the key to connect 
+
+Step 7: download the Hadoop file.
+
+>>wget http://mirrors.sonic.net/apache/hadoop/common/hadoop-2.6.5/hadoop-2.6.5-src.tar.gz
+
+This command will download the Hadoop files.
+
+Step 8: unzip
+
+goto the location of the downloaded Hadoop files and unzip it using the command
+
+>>tar xvzf hadoop-2.6.0.tar.gz
+
+This will unzip the files
